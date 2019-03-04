@@ -1,0 +1,4 @@
+image:
+  repository: registry.cn-hangzhou.aliyuncs.com/xuwenbao/grafana
+  tag: 5.4.3-with-plugins
+  pullPolicy: IfNotPresent
