@@ -1,0 +1,46 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-webhook-dingtalk-svc
+  labels:
+    app: prometheus
+    component: prometheus-webhook-dingtalk
+spec:
+  ports:
+  - name: http
+    port: 8060
+    targetPort: http
+  selector:
+    app: prometheus
+    component: prometheus-webhook-dingtalk
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-webhook-dingtalk
+  labels:
+    app: prometheus
+    component: prometheus-webhook-dingtalk
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+      component: prometheus-webhook-dingtalk
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus
+        component: prometheus-webhook-dingtalk
+    spec:
+      containers:
+      - name: prometheus-webhook-dingtalk
+        image: quay.io/timonwong/prometheus-webhook-dingtalk:v0.3.0
+        ports:
+        - name: http
+          containerPort: 8060
+        args:
+        - --ding.profile=webhook1=https://oapi.dingtalk.com/robot/send?access_token=b7f22e9579e480bec94e13ee018c0b83dcbe30a24edb38e75798a05e99a74c42
+
