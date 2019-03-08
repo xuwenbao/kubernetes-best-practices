@@ -42,5 +42,5 @@ spec:
         - name: http
           containerPort: 8060
         args:
-        - --ding.profile=webhook1=https://oapi.dingtalk.com/robot/send?access_token=b7f22e9579e480bec94e13ee018c0b83dcbe30a24edb38e75798a05e99a74c42
+        - --ding.profile=webhook1=https://oapi.dingtalk.com/robot/send?access_token=35eb7e694d4bc0e97f3d806448833c3254ef3f899bf9ed966eb21982b6852f5b
 
